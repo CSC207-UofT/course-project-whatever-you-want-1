@@ -1,7 +1,6 @@
 package user;
 
 import constants.HasName;
-import constants.IterableMap;
 import graph.DirectedGraph;
 import resource.Resource;
 import constants.Achievements;
@@ -10,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -19,14 +19,14 @@ public class User implements HasName, Serializable {
     private static final long serialVersionUID = 1113799434508676095L;
     private String username;
     private String email;
-    private String password;
+    private final String password;
     private int rewardPoints;
     private final LocalDate lastLogin;
     private int totalLogins;
     private final ArrayList<String> listOfPostId = new ArrayList<>();
     private final Map<String, DirectedGraph> mapOfGraph = new HashMap<>();
     private final Map<String, Resource> mapOfResource = new HashMap<>();
-    private final Map<String, Boolean> mapOfAchievement = new HashMap<>();
+    private final Map<String, Boolean> mapOfAchievement = new LinkedHashMap<>();
 
 
  
@@ -76,10 +76,6 @@ public class User implements HasName, Serializable {
 
     public void setEmail(String newEmail) {
         email = newEmail;
-    }
-
-    public void setPassword(String newPassword) {
-        password = newPassword;
     }
 
     public int getRewardPoints() {
