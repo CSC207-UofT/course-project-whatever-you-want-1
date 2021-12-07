@@ -51,7 +51,7 @@ public class SystemInOut {
         scanner.close();
     }
 
-    public void mainMenu() {
+    private void mainMenu() {
             presenter.mainMenuOptions();
             String input = scanner.nextLine();
 
@@ -287,7 +287,7 @@ public class SystemInOut {
     }
 
 
-    public void logIn() {
+    private void logIn() {
         String input = presenter.LoginOptions();
 
         input = presenter.getCorrectLoginOption(input);
@@ -314,7 +314,7 @@ public class SystemInOut {
         }
     }
 
-    public boolean signIn() {
+    private boolean signIn() {
         String username = getUsernameSignIn();
         if (username.equals(Presenter.RETURN)) {
             return false;
@@ -330,7 +330,7 @@ public class SystemInOut {
      * fully implement this.
      * @param username the username of the user
      */
-    public void setCurrentUser(String username) {
+    private void setCurrentUser(String username) {
         try {
             userManager.setCurrentUser(username);
             achievementManager.setCurrentUser(userManager.getCurrentUser());
@@ -342,7 +342,7 @@ public class SystemInOut {
         }
     }
 
-    public boolean enterPassword(String username) {
+    private boolean enterPassword(String username) {
         String password = presenter.getNonEmptyPassword();
         while (!getCorrectPassword(username).equals(password)) {
             presenter.incorrectPassword();
@@ -354,7 +354,7 @@ public class SystemInOut {
         return true;
     }
 
-    public String getCorrectPassword(String username) {
+    private String getCorrectPassword(String username) {
         String password = null;
         try {
             password = userManager.getAUser(username).getPassword();
@@ -376,7 +376,7 @@ public class SystemInOut {
         return username;
     }
 
-    public String getUsernameRegister() {
+    private String getUsernameRegister() {
         String username = presenter.getNonEmptyUsername();
         while (userManager.containsUsername(username)) {
             presenter.usernameTaken();
@@ -388,7 +388,7 @@ public class SystemInOut {
         return username;
     }
 
-    public String getEmailRegister() {
+    private String getEmailRegister() {
         presenter.getEmail();
         String email = scanner.nextLine();
         Pattern p = Pattern.compile("^\\w{1,63}@[a-zA-Z0-9]{2,63}\\.[a-zA-Z]{2,63}(\\.[a-zA-Z]{2,63})?$");
@@ -404,7 +404,7 @@ public class SystemInOut {
         return email;
     }
 
-    public String getPasswordRegister() {
+    private String getPasswordRegister() {
         return presenter.getNonEmptyPassword();
     }
 
@@ -431,7 +431,7 @@ public class SystemInOut {
 
 
 
-    public void exitProgram() {
+    private void exitProgram() {
         try {
             save();
         } catch (IOException e) {
@@ -443,7 +443,7 @@ public class SystemInOut {
     /**
      * Check for the learned tree and update them into user's info storage.
      */
-    public void checkForMyTree(){
+    private void checkForMyTree(){
         for(DirectedGraph graph: graphManager.getAllGraphs().values()){
             if(graph.isLearnedGraph()){
                 user.User currUser=userManager.getCurrentUser();
