@@ -8,7 +8,7 @@ import user.User;
 
 import static org.junit.Assert.*;
 
-public class communityTest {
+public class CommunityTest {
     Community community;
     User user;
 
