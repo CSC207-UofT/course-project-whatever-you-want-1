@@ -24,14 +24,16 @@ public class PostTest {
     @Test
     public void testAddCommentSuccessfulAndGetMapOfContents() {
         Comment c1 = new Comment("testing", "Comment #0",user);
+        Comment c2 = new Comment("aa", "Comment #1", user);
 
         Map<String, Comment> mapToCompare = new HashMap<>();
 
         mapToCompare.put("Comment #0", c1);
+        mapToCompare.put("Comment #1", c2);
 
         assertEquals(mapToCompare.toString(), post.getMapOfComments().toString());
 
-        assertEquals(1, post.getNumberOfComments());
+        assertEquals(2, post.getNumberOfComments());
 
         assertTrue(post.getMapOfComments().get("Comment #0").visibility());
     }
@@ -59,14 +61,16 @@ public class PostTest {
         post.deletePublishedContent("Comment #0");
 
         Comment c1 = new Comment("testing", "Comment #0",user);
+        Comment c2 = new Comment("aa", "Comment #1", user);
 
         Map<String, Comment> mapToCompare = new HashMap<>();
 
         mapToCompare.put("Comment #0", c1);
+        mapToCompare.put("Comment #1", c2);
 
         assertEquals(mapToCompare.toString(), post.getMapOfComments().toString());
 
-        assertEquals(1, post.getNumberOfComments());
+        assertEquals(2, post.getNumberOfComments());
 
         assertFalse(post.getMapOfComments().get("Comment #0").visibility());
     }
@@ -74,14 +78,14 @@ public class PostTest {
     @Test
     public void testGetNextIdNoDelete() {
         post.addPublishedContent("debugging", user);
-        assertEquals("Comment #2", post.getNextId());
+        assertEquals("Comment #3", post.getNextId());
     }
 
     @Test
     public void testGetNextIdWithDelete() throws HasPublishedContents.PostNotFoundException {
         post.addPublishedContent("debugging", user);
         post.deletePublishedContent("Comment #0");
-        assertEquals("Comment #2", post.getNextId());
+        assertEquals("Comment #3", post.getNextId());
     }
 
     @Test
@@ -116,7 +120,6 @@ public class PostTest {
                         "--------------"
                         +'\n'
                         + comment0.getId()
-                        +'='
                         +'\n'
                         + comment0.getCreator().getName()
                         +'\n'
@@ -126,7 +129,6 @@ public class PostTest {
                         "--------------"
                         +'\n'
                         + comment1.getId()
-                        +'='
                         +'\n'
                         + comment1.getCreator().getName()
                         +'\n'

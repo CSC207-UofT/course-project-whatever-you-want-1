@@ -11,7 +11,8 @@ public class PublishedContents implements Visible, Serializable {
 
     /**
      * Constructor for the published contents class
-     * @param id: The id of the comment
+     *
+     * @param id:      The id of the comment
      * @param creator: The creator of the comment
      */
     public PublishedContents(String id, User creator) {
@@ -21,6 +22,7 @@ public class PublishedContents implements Visible, Serializable {
 
     /**
      * Get the ID of the published contents
+     *
      * @return Then ID of the published contents
      */
     public String getId() {
@@ -30,6 +32,7 @@ public class PublishedContents implements Visible, Serializable {
 
     /**
      * Get the creator of the published contents
+     *
      * @return Then creator of the published contents
      */
     public User getCreator() {

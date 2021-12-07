@@ -8,7 +8,7 @@ public interface HasPublishedContents {
      * Create a specific exception for PostNotFoundException
      */
     class PostNotFoundException extends Exception {
-        public PostNotFoundException () {
+        public PostNotFoundException() {
             super();
         }
     }
@@ -16,7 +16,7 @@ public interface HasPublishedContents {
     /**
      * Name the exception by ABSENT
      */
-   PostNotFoundException ABSENT = new PostNotFoundException ();
+    PostNotFoundException ABSENT = new PostNotFoundException();
 
 
     /**
@@ -25,10 +25,9 @@ public interface HasPublishedContents {
     String addPublishedContent(String content, User creator);
 
 
-
     /**
      * Delete the intended content from the map which the content belongs to, throw an
      * exception if the post does not exist in the map
      */
-    void deletePublishedContent(String id) throws  PostNotFoundException;
+    void deletePublishedContent(String id) throws PostNotFoundException;
 }
